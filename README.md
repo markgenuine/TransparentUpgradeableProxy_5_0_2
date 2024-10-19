@@ -33,4 +33,4 @@ Simple contract: [Counter.sol](https://github.com/markgenuine/TransparentUpgrade
 
 Script deploy contract: [Counter.s.sol](https://github.com/markgenuine/TransparentUpgradeableProxy_5_0_2/blob/main/script/Counter.s.sol)
 
-Tests contract: [Counter.t.sol](https://github.com/markgenuine/TransparentUpgradeableProxy_5_0_2/blob/main/test/Counter.sol)
+Tests contract: [Counter.t.sol](https://github.com/markgenuine/TransparentUpgradeableProxy_5_0_2/blob/main/test/Counter.t.sol)
