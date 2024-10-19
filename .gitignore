@@ -1,6 +1,8 @@
 # Compiler files
 cache/
 out/
+coverage
+node_modules
 
 # Ignores development broadcast logs
 !/broadcast
@@ -12,3 +14,12 @@ docs/
 
 # Dotenv file
 .env
+.env.save
+.pass
+.pass.save
+
+
+# etc.
+.lh
+.DS_Store
+.idea

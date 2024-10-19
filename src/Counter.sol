@@ -1,10 +1,24 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.20;
 
-contract Counter {
+import "@openzeppelin/contracts/proxy/utils/Initializable.sol";
+
+contract Counter is Initializable {
     uint256 public number;
 
-    function setNumber(uint256 newNumber) public {
+    constructor() {
+        _disableInitializers();
+    }
+
+    function initialize(
+        uint256 startNumber
+    ) public {
+        number = startNumber;
+    }
+
+    function setNumber(
+        uint256 newNumber
+    ) public {
         number = newNumber;
     }
 

@@ -1,66 +1,36 @@
-## Foundry
+# OpenZeppelin v5.0.2 TransparentUpgradeableProxy.
+### Use with Foundry: Deploy and Upgrade contract.
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
-
-Foundry consists of:
-
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
+### Install
 
 ```shell
-$ forge build
+$ forge install
 ```
 
 ### Test
 
 ```shell
-$ forge test
+$ forge test -vvvv
 ```
 
-### Format
+### Description
+Old version TransparentUpgradeableProxy on deploy and upgrade you was be must took in advance deploy <b>ProxyAdmin</b> but on new version it's chanded.
+And now, you must specify in <b>TransparentUpgradeableProxy</b> initialOwner and inside the proxy will deploy <b>ProxyAdmin</b>.
+It is not possible to get the address of a simple call from the contract, this creates problems in testing and other functionality.
 
-```shell
-$ forge fmt
+We have several various:
+- Change visibility function <b>getAdmin()</b> contract <b>TransparentUpgradeableProxy</b> what not true.
+- Get b><ProxyAdmin</b> address from events and logs. We can use.
+```solidity
+    vm.recordLogs();
+    ...............
+    ...............
+    Vm.Log[] memory entries = vm.getRecordedLogs();
 ```
+Get <b>ProxyAdmin</b> address from Logs foundry and array entries.
 
-### Gas Snapshots
+Simple contract: [Counter.sol](https://github.com/markgenuine/TransparentUpgradeableProxy_5_0_2/src/Counter.sol)
 
-```shell
-$ forge snapshot
-```
+Script deploy contract: [Counter.s.sol](https://github.com/markgenuine/TransparentUpgradeableProxy_5_0_2/script/Counter.s.sol)
 
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+Tests contract: [Counter.t.sol](https://github.com/markgenuine/TransparentUpgradeableProxy_5_0_2/test/Counter.sol)
