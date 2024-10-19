@@ -6,15 +6,15 @@ import { Counter } from "../src/Counter.sol";
 import { TransparentUpgradeableProxy } from "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol";
 
 contract CounterScript is Script {
-    Counter public counter;
+    uint256 public constant MAGIC_NUMBER = 20;
 
     function run() public returns (address) {
         vm.startBroadcast();
 
-        counter = new Counter();
+        Counter counter = new Counter();
 
         TransparentUpgradeableProxy proxy = new TransparentUpgradeableProxy(
-            address(counter), address(msg.sender), abi.encodeCall(Counter.initialize, (uint256(20)))
+            address(counter), address(msg.sender), abi.encodeCall(Counter.initialize, MAGIC_NUMBER)
         );
 
         vm.stopBroadcast();
